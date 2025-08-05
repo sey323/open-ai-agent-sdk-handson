@@ -48,19 +48,19 @@ triage_agent = Agent(
 )
 
 async def main():
-    # Example 1: History question
+    print("インタラクティブモード: 質問を入力してください (Ctrl+Cで終了)")
     try:
-        result = await Runner.run(triage_agent, "who was the first president of the united states?")
-        print(result.final_output)
-    except InputGuardrailTripwireTriggered as e:
-        print("Guardrail blocked this input:", e)
-
-    # Example 2: General/philosophical question
-    try:
-        result = await Runner.run(triage_agent, "What is the meaning of life?")
-        print(result.final_output)
-    except InputGuardrailTripwireTriggered as e:
-        print("Guardrail blocked this input:", e)
+        while True:
+            user_input = input("> ")
+            if not user_input.strip():
+                continue
+            try:
+                result = await Runner.run(triage_agent, user_input)
+                print(result.final_output)
+            except InputGuardrailTripwireTriggered as e:
+                print("Guardrail blocked this input:", e)
+    except KeyboardInterrupt:
+        print("\n終了します")
 
 if __name__ == "__main__":
     asyncio.run(main())
