@@ -2,6 +2,7 @@ from agents import Agent, InputGuardrail, Runner, GuardrailFunctionOutput
 from open_ai_agent_sample.agents.quick_start.guardrail_agent import GuardrailAgent, HomeworkOutput
 from open_ai_agent_sample.agents.quick_start.history_tutor_agent import HistoryTutorAgent
 
+
 class TriageAgent:
     def __init__(self):
         self.agent = Agent(
