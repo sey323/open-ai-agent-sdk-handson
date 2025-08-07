@@ -1,16 +1,14 @@
 from agents import Agent, InputGuardrail, Runner, GuardrailFunctionOutput
 from open_ai_agent_sample.agents.quick_start.guardrail_agent import GuardrailAgent, HomeworkOutput
-from open_ai_agent_sample.agents.quick_start.math_tutor_agent import MathTutorAgent
 from open_ai_agent_sample.agents.quick_start.history_tutor_agent import HistoryTutorAgent
 
 class TriageAgent:
     def __init__(self):
         self.agent = Agent(
             name="Triage Agent",
-            instructions="You determine which agent to use based on the user's homework question",
+            instructions="ユーザーの質問内容に応じて適切なエージェントに振り分けます。",
             handoffs=[
                 HistoryTutorAgent().agent,
-                MathTutorAgent().agent
             ],
             input_guardrails=[
                 InputGuardrail(guardrail_function=self.homework_guardrail),

@@ -18,7 +18,7 @@ async def main():
                 result = await Runner.run(triage_agent, user_input)
                 print(result.final_output)
             except InputGuardrailTripwireTriggered as e:
-                print("Guardrail blocked this input:", e)
+                print("宿題に関係ない質問だったので、ガードレールでブロックされました:", e)
     except KeyboardInterrupt:
         print("\n終了します")
 
