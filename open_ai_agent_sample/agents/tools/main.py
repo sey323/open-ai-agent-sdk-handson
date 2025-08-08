@@ -3,12 +3,14 @@ from open_ai_agent_sample.config import get_env
 from open_ai_agent_sample.agents.tools.tools_agent import ToolsAgent
 from agents import Runner
 
+
 async def stream_output(text):
     for chunk in text.split("。"):
         if chunk:
             print(chunk + "。", end="", flush=True)
             await asyncio.sleep(0.2)
     print()
+
 
 async def main():
     tools_agent = ToolsAgent().agent
